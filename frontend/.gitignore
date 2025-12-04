@@ -1,0 +1,25 @@
+# Java / Maven
+target/
+*.log
+*.class
+*.jar
+*.war
+*.iml
+
+# Spring Boot
+*.pid
+*.DS_Store
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp

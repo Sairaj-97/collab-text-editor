@@ -1,0 +1,30 @@
+/* Reset + base styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Global font + background */
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: #020617; /* deep navy */
+}
+
+/* Remove default link styles */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
