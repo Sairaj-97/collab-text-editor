@@ -67,65 +67,62 @@ A full-stack **real-time collaborative text editor** that allows multiple users 
 
 ## 🗂️ Project Structure
 
+```
 COLLAB_TEXT_EDITOR/
 │
-├── frontend/                          # React frontend application
+├── frontend/                           # React + Vite application
 │   ├── node_modules/
 │   ├── public/
 │   ├── src/
-│   │   ├── assets/                   # Static assets (images, icons)
-│   │   ├── pages/                    # Page components
-│   │   │   ├── DocumentsPage.jsx    # Dashboard - list of documents
-│   │   │   ├── EditorPage.jsx       # Real-time collaborative editor
-│   │   │   └── LoginPage.jsx        # Login/Register page
-│   │   ├── App.css                   # Global styles
-│   │   ├── App.jsx                   # Main app component with routing
-│   │   ├── index.css                 # Root CSS
-│   │   └── main.jsx                  # React entry point
+│   │   ├── assets/
+│   │   ├── pages/
+│   │   │   ├── DocumentsPage.jsx       # Documents management page
+│   │   │   ├── EditorPage.jsx          # Real-time collaborative editor
+│   │   │   └── LoginPage.jsx           # Login and registration page
+│   │   ├── App.css
+│   │   ├── App.jsx                     # Main app component with routing
+│   │   ├── index.css
+│   │   └── main.jsx                    # Entry point
 │   ├── .gitignore
 │   ├── eslint.config.js
-│   ├── index.html                    # HTML template
+│   ├── index.html
 │   ├── package-lock.json
-│   ├── package.json                  # Frontend dependencies
+│   ├── package.json
 │   ├── README.md
-│   └── vite.config.js                # Vite build configuration
+│   └── vite.config.js
 │
-├── src/main/java/com/termination/collab_text_editor/
-│   │
-│   ├── auth/                         # Authentication module
-│   │   ├── AuthController.java      # REST endpoints for login/register
-│   │   ├── AuthResponse.java        # Authentication response DTOs
-│   │   ├── LoginRequest.java        # Login request DTO
-│   │   ├── PasswordService.java     # Password hashing/validation
-│   │   └── RegisterRequest.java     # Registration request DTO
-│   │
-│   ├── document/                     # Document management module
-│   │   ├── CollaborationController.java  # WebSocket message handler
-│   │   ├── CreateDocumentRequest.java    # Document creation DTO
-│   │   ├── DocIdGenerator.java           # Unique document ID generator
-│   │   ├── DocumentController.java       # REST endpoints for documents
-│   │   ├── DocumentEntity.java           # Document model/entity
-│   │   ├── DocumentRepository.java       # MongoDB repository
-│   │   ├── EditMessage.java              # Real-time edit message DTO
-│   │   └── UpdateDocumentRequest.java    # Document update DTO
-│   │
-│   ├── user/                         # User management module
-│   │   ├── User.java                # User model/entity
-│   │   └── UserRepository.java      # MongoDB repository for users
-│   │
-│   ├── CollabTextEditorApplication.java  # Spring Boot main class
-│   ├── SecurityConfig.java               # Security & CORS configuration
-│   └── WebSocketConfig.java              # WebSocket configuration
-│
-├── src/main/resources/               # Application configuration files
-│
-├── src/test/java/com/termination/collab_text_editor/
-│
-├── target/                           # Compiled Java classes (generated)
-│
-├── .gitattributes
-├── .mvn/                             # Maven wrapper files
-└── pom.xml                           # Maven dependencies & build config
+└── src/                                # Spring Boot backend
+    ├── main/
+    │   ├── java/com/termination/collab_text_editor/
+    │   │   ├── auth/
+    │   │   │   ├── AuthController.java         # Authentication endpoints
+    │   │   │   ├── AuthResponse.java           # Auth response DTO
+    │   │   │   ├── LoginRequest.java           # Login request DTO
+    │   │   │   ├── PasswordService.java        # Password hashing service
+    │   │   │   └── RegisterRequest.java        # Registration request DTO
+    │   │   ├── document/
+    │   │   │   ├── CollaborationController.java    # WebSocket collaboration
+    │   │   │   ├── CreateDocumentRequest.java      # Create doc request DTO
+    │   │   │   ├── DocIdGenerator.java             # Document ID generator
+    │   │   │   ├── DocumentController.java         # Document REST API
+    │   │   │   ├── DocumentEntity.java             # Document model
+    │   │   │   ├── DocumentRepository.java         # MongoDB repository
+    │   │   │   ├── EditMessage.java                # WebSocket edit message
+    │   │   │   └── UpdateDocumentRequest.java      # Update doc request DTO
+    │   │   ├── user/
+    │   │   │   ├── User.java                   # User entity model
+    │   │   │   └── UserRepository.java         # User MongoDB repository
+    │   │   ├── CollabTextEditorApplication.java    # Main Spring Boot app
+    │   │   ├── SecurityConfig.java                 # Security configuration
+    │   │   └── WebSocketConfig.java                # WebSocket configuration
+    │   └── resources/
+    │       └── application.properties          # Application configuration
+    ├── test/
+    └── target/
+```
+
+---
+
 
 ## ⚙️ Prerequisites
 
