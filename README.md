@@ -67,38 +67,65 @@ A full-stack **real-time collaborative text editor** that allows multiple users 
 
 ## 🗂️ Project Structure
 
-```
-collab_text_editor/
+COLLAB_TEXT_EDITOR/
 │
-├── backend/                    # Spring Boot application
+├── frontend/                          # React frontend application
+│   ├── node_modules/
+│   ├── public/
 │   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── com/example/collabtexteditor/
-│   │   │   │       ├── config/          # Configuration classes
-│   │   │   │       ├── controller/      # REST & WebSocket controllers
-│   │   │   │       ├── model/           # Entity classes
-│   │   │   │       ├── repository/      # MongoDB repositories
-│   │   │   │       ├── service/         # Business logic
-│   │   │   │       └── CollabTextEditorApplication.java
-│   │   │   └── resources/
-│   │   │       └── application.properties
-│   │   └── test/
-│   └── pom.xml
+│   │   ├── assets/                   # Static assets (images, icons)
+│   │   ├── pages/                    # Page components
+│   │   │   ├── DocumentsPage.jsx    # Dashboard - list of documents
+│   │   │   ├── EditorPage.jsx       # Real-time collaborative editor
+│   │   │   └── LoginPage.jsx        # Login/Register page
+│   │   ├── App.css                   # Global styles
+│   │   ├── App.jsx                   # Main app component with routing
+│   │   ├── index.css                 # Root CSS
+│   │   └── main.jsx                  # React entry point
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html                    # HTML template
+│   ├── package-lock.json
+│   ├── package.json                  # Frontend dependencies
+│   ├── README.md
+│   └── vite.config.js                # Vite build configuration
 │
-└── frontend/                   # React + Vite application
-    ├── src/
-    │   ├── components/         # React components
-    │   ├── pages/              # Page components
-    │   ├── services/           # API service layer
-    │   ├── App.jsx             # Main app component
-    │   └── main.jsx            # Entry point
-    ├── index.html
-    ├── package.json
-    └── vite.config.js
-```
-
----
+├── src/main/java/com/termination/collab_text_editor/
+│   │
+│   ├── auth/                         # Authentication module
+│   │   ├── AuthController.java      # REST endpoints for login/register
+│   │   ├── AuthResponse.java        # Authentication response DTOs
+│   │   ├── LoginRequest.java        # Login request DTO
+│   │   ├── PasswordService.java     # Password hashing/validation
+│   │   └── RegisterRequest.java     # Registration request DTO
+│   │
+│   ├── document/                     # Document management module
+│   │   ├── CollaborationController.java  # WebSocket message handler
+│   │   ├── CreateDocumentRequest.java    # Document creation DTO
+│   │   ├── DocIdGenerator.java           # Unique document ID generator
+│   │   ├── DocumentController.java       # REST endpoints for documents
+│   │   ├── DocumentEntity.java           # Document model/entity
+│   │   ├── DocumentRepository.java       # MongoDB repository
+│   │   ├── EditMessage.java              # Real-time edit message DTO
+│   │   └── UpdateDocumentRequest.java    # Document update DTO
+│   │
+│   ├── user/                         # User management module
+│   │   ├── User.java                # User model/entity
+│   │   └── UserRepository.java      # MongoDB repository for users
+│   │
+│   ├── CollabTextEditorApplication.java  # Spring Boot main class
+│   ├── SecurityConfig.java               # Security & CORS configuration
+│   └── WebSocketConfig.java              # WebSocket configuration
+│
+├── src/main/resources/               # Application configuration files
+│
+├── src/test/java/com/termination/collab_text_editor/
+│
+├── target/                           # Compiled Java classes (generated)
+│
+├── .gitattributes
+├── .mvn/                             # Maven wrapper files
+└── pom.xml                           # Maven dependencies & build config
 
 ## ⚙️ Prerequisites
 
@@ -377,56 +404,6 @@ Verify both users are connected to the same document ID
 
 ---
 
-## 🚀 Deployment
-
-### Backend Deployment
-
-**Option 1: JAR File**
-```bash
-cd backend
-mvn clean package
-java -jar target/collab-text-editor-0.0.1-SNAPSHOT.jar
-```
-
-**Option 2: Docker**
-```dockerfile
-FROM openjdk:17-jdk-slim
-COPY target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
-```
-
-### Frontend Deployment
-
-```bash
-cd frontend
-npm run build
-# Deploy the 'dist' folder to your hosting service
-```
-
-### Recommended Hosting Options
-
-- **Backend:** Railway, Render, Heroku, AWS EC2
-- **Frontend:** Vercel, Netlify, GitHub Pages
-- **Database:** MongoDB Atlas (cloud MongoDB)
-
----
-
-## 🔮 Future Enhancements
-
-- [ ] **JWT Authentication** for secure token-based auth
-- [ ] **Role-based Access Control** (owner, editor, viewer)
-- [ ] **Document Permissions** (public, private, shared with specific users)
-- [ ] **Version History** with ability to restore previous versions
-- [ ] **Conflict Resolution** using Operational Transformation (OT) or CRDTs
-- [ ] **Colored Cursors** showing where each user is typing
-- [ ] **Comments & Annotations** on specific text sections
-- [ ] **Export to PDF/DOCX**
-- [ ] **Rich Text Editor** (alternative to Markdown)
-- [ ] **File Attachments** and image uploads
-- [ ] **Real-time Notifications**
-- [ ] **Mobile App** (React Native)
-
----
 
 ## 📚 Learning Resources
 
@@ -448,48 +425,13 @@ npm run build
 
 ---
 
-## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-
----
-
-## 🙏 Acknowledgments
-
-- Spring Boot team for the excellent framework
-- React team for the powerful UI library
-- MongoDB for the flexible NoSQL database
-- All open-source contributors
-
----
-
-## 📞 Support
-
-If you have any questions or run into issues:
-
-1. Check the [Troubleshooting](#-troubleshooting) section
-2. Open an issue on GitHub
-3. Contact the maintainer
+**Sairaj Raghuwanshi**
+- GitHub: [@Sairaj-97](https://github.com/Sairaj-97)
+- Email: raghuwanshisairaj@example.com
 
 ---
 
