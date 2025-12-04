@@ -116,7 +116,7 @@ Before running this project, ensure you have the following installed:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/collab-text-editor.git
+git clone https://github.com/Sairaj-97/collab-text-editor.git
 cd collab-text-editor
 ```
 
